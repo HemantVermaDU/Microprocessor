@@ -1,0 +1,80 @@
+;Program for 32 bit binary substraction 
+
+	.model small
+	.386
+	.data
+
+	DATA1 dd 00000000H
+	msg db 10,13,"Enter the first no.:: $"
+	msg1 db 10,13,"Enter the second no.:: $"
+	msg2 db 10,13,"The result is :: $"
+
+	.code
+	.startup
+	MOV AH,09
+	MOV DX,OFFSET msg
+	INT 21H
+	MOV EBX,0
+	MOV CX,8
+
+	AGAIN: MOV AH,01 ;1ST NO. ENTERED
+	INT 21H
+	CMP AL,'A'
+	JGE L5
+	SUB AL,30H
+	JMP L6
+	L5: SUB AL,37H
+	L6: SHL EBX,4
+
+	ADD BL,AL
+	LOOP AGAIN
+	MOV DATA1,EBX
+	MOV AH,09
+	MOV DX,OFFSET msg1
+	INT 21H
+	MOV EBX,0
+	MOV CX,8
+
+	AGAIN1:MOV AH,01 ;2nd NO. ENTERED
+	INT 21H
+	CMP AL,'A'
+	JGE L7
+	SUB AL,30H
+	JMP L8
+	L7: SUB AL,37H
+	L8: SHL EBX,4
+
+	ADD BL,AL
+	LOOP AGAIN1
+	MOV AH,09
+	MOV DX,OFFSET msg2
+	INT 21H
+	MOV EDX,DATA1
+	CMP EBX,EDX
+	JL L1
+	JMP L2
+
+	L1: MOV DATA1,EDX
+	MOV EDX,EBX
+	MOV EBX,DATA1
+
+	L2: SUB EBX,EDX ;SUBTRACTION FOR JB[EDX<EBX]
+	MOV CX,8
+	MOV EDX,0
+	AGAIN3: ROL EBX,4
+	MOV DL,BL
+	AND DL,0FH
+	CMP DL,09
+	JG L3 ; to o/p given no.
+	ADD DL,30H
+	JMP PRINT
+
+	L3: ADD DL,37H
+	PRINT: MOV AH,02
+	INT 21H
+	LOOP AGAIN3
+
+	MOV AH,4CH
+	INT 21H
+	END
+
