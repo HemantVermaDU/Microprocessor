@@ -1,0 +1,14 @@
+.data ALL PRACTICALS
+ADD two 32 Bit Binary Numbers. - reference SM1.asm;
+SUB two 32 bit binary number. - reference SM2.asm;
+MUL two 32 bit Binary Numbers. - reference SM3.asm;
+DIV of two 32 bit Binary Numbers. - reference SM4.asm;
+32 Bit BCD Addition. - reference SM5.asm;
+32 Bit BCD Subtraction. - reference SM6.asm;
+Linear Search. - reference SM7.asm;
+Binary Search. - reference SM8.asm;
+Two Arrays : Addition. - reference SM9.asm;
+Two Arrays : Substract two arrays. - reference SM10.asm;
+Binary to ASCII. - reference SM11.asm;
+ASCII to Binary. - reference SM12.asm;
+Sorting (Bubble Sort). - reference SM13.asm;
